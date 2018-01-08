@@ -9,7 +9,7 @@ import javax.jms.JMSException;
  * Created by linlinyeyu on 2018/1/8.
  */
 public class PersonReceiveMessage extends ReceiveMessage {
-    PersonReceiveMessage(String queue){
+    public PersonReceiveMessage(String queue){
         super(queue);
     }
 

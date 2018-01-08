@@ -13,7 +13,7 @@ public abstract class ReceiveMessage {
     private static final String PASSWORD= ActiveMQConnection.DEFAULT_PASSWORD; // 默认的连接密码
     private static final String BROKEURL= ActiveMQConnection.DEFAULT_BROKER_URL; // 默认的连接地址
 
-    protected ConnectionFactory connectionFactory; // 连接工厂
+    protected ActiveMQConnectionFactory connectionFactory; // 连接工厂
     protected Connection connection = null; // 连接
     protected Session session; // 会话 接受或者发送消息的线程
     protected Destination destination; // 消息的目的地
@@ -21,6 +21,7 @@ public abstract class ReceiveMessage {
 
     public ReceiveMessage(String queueName){
         connectionFactory = new ActiveMQConnectionFactory(USERNAME,PASSWORD,BROKEURL);
+        connectionFactory.setTrustAllPackages(  true);
         try {
             connection = connectionFactory.createConnection();
             connection.start();

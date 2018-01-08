@@ -2,6 +2,7 @@ package provider;
 
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.RedeliveryPolicy;
 
 import javax.jms.*;
 
@@ -12,8 +13,8 @@ public abstract class SendMessage {
     private static final String USERNAME = ActiveMQConnection.DEFAULT_USER;
     private static final String PASSWORD = ActiveMQConnection.DEFAULT_PASSWORD;
     private static final String BROKEURL = ActiveMQConnection.DEFAULT_BROKER_URL;
-    private static final int SENDNUM = 10;
-    protected ConnectionFactory connectionFactory;
+
+    protected ActiveMQConnectionFactory connectionFactory;
     protected Connection connection = null;
     protected Session session;
     protected Destination destination;
@@ -21,7 +22,16 @@ public abstract class SendMessage {
 
     protected SendMessage(String queueName) {
         this.connectionFactory = new ActiveMQConnectionFactory(USERNAME,PASSWORD,BROKEURL);
+        connectionFactory.setTrustAllPackages(true);
+        RedeliveryPolicy redeliveryPolicy = new RedeliveryPolicy();
+        redeliveryPolicy.setUseExponentialBackOff(true);
+        redeliveryPolicy.setMaximumRedeliveries(3);
+        redeliveryPolicy.setInitialRedeliveryDelay(10000);
+        redeliveryPolicy.setBackOffMultiplier(2);
+        redeliveryPolicy.setMaximumRedeliveryDelay(5000);
+        connectionFactory.setRedeliveryPolicy(redeliveryPolicy);
         try {
+            this.connection = connectionFactory.createConnection();
             this.connection.start();
             this.session = this.connection.createSession(Boolean.TRUE,Session.AUTO_ACKNOWLEDGE);
             this.destination=this.session.createQueue(queueName);
@@ -43,5 +53,5 @@ public abstract class SendMessage {
         return true;
     }
 
-    protected abstract <T> boolean sendMessage(T obj);
+    public abstract <T> boolean sendMessage(T obj);
 }

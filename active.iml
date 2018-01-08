@@ -12,5 +12,6 @@
     <orderEntry type="library" name="xstream-1.4.7" level="application" />
     <orderEntry type="library" name="httpcore-4.4.7" level="application" />
     <orderEntry type="library" name="httpclient-4.5.4" level="application" />
+    <orderEntry type="library" name="activemq-all-5.15.0" level="application" />
   </component>
 </module>

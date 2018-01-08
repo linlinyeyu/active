@@ -14,7 +14,7 @@ public class MapSendMessage extends SendMessage {
     }
 
     @Override
-    protected <T> boolean sendMessage(T obj) {
+    public  <T> boolean sendMessage(T obj) {
         try {
             MapMessage mapMessage = session.createMapMessage();
             mapMessage.setString("message",(String) obj);

@@ -10,12 +10,12 @@ import javax.jms.StreamMessage;
  * Created by linlinyeyu on 2018/1/8.
  */
 public class StreamSendMessage extends SendMessage {
-    StreamSendMessage(String queueName){
+    public StreamSendMessage(String queueName){
         super(queueName);
     }
 
     @Override
-    protected <T> boolean sendMessage(T obj) {
+    public  <T> boolean sendMessage(T obj) {
         try {
             StreamMessage streamMessage = session.createStreamMessage();
             streamMessage.writeObject((Object)obj);

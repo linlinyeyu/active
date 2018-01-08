@@ -14,7 +14,7 @@ public class StringSendMessage extends SendMessage {
     }
 
     @Override
-    protected <T> boolean sendMessage(T obj) {
+    public  <T> boolean sendMessage(T obj) {
         try {
             TextMessage textMessage = this.session.createTextMessage((String) obj);
             this.messageProducer.send(textMessage);
