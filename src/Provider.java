@@ -1,5 +1,6 @@
 
 
+import domain.Person;
 import org.apache.activemq.*;
 
 import javax.jms.*;
