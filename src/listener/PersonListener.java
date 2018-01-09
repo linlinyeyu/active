@@ -2,10 +2,7 @@ package listener;
 
 import domain.Person;
 
-import javax.jms.JMSException;
-import javax.jms.Message;
-import javax.jms.MessageListener;
-import javax.jms.ObjectMessage;
+import javax.jms.*;
 
 /**
  * Created by linlinyeyu on 2018/1/8.
@@ -13,10 +10,9 @@ import javax.jms.ObjectMessage;
 public class PersonListener implements MessageListener {
     @Override
     public void onMessage(Message message) {
-        ObjectMessage objectMessage = (ObjectMessage)message;
+        TextMessage textMessage = (TextMessage) message;
         try {
-            Person person = (Person) objectMessage.getObject();
-            System.out.println(person.getName());
+            System.out.println(textMessage.getText());
         } catch (JMSException e) {
             e.printStackTrace();
         }

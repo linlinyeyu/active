@@ -1,6 +1,6 @@
 package provider.impl;
 
-import provider.SendMessage;
+import provider.QueueProvider;
 
 import javax.jms.JMSException;
 import javax.jms.MapMessage;
@@ -8,8 +8,8 @@ import javax.jms.MapMessage;
 /**
  * Created by linlinyeyu on 2018/1/8.
  */
-public class MapSendMessage extends SendMessage {
-    public MapSendMessage(String queueName){
+public class MapQueueProvider extends QueueProvider {
+    public MapQueueProvider(String queueName){
         super(queueName);
     }
 

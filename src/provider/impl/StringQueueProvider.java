@@ -1,6 +1,6 @@
 package provider.impl;
 
-import provider.SendMessage;
+import provider.QueueProvider;
 
 import javax.jms.JMSException;
 import javax.jms.TextMessage;
@@ -8,8 +8,8 @@ import javax.jms.TextMessage;
 /**
  * Created by linlinyeyu on 2018/1/3.
  */
-public class StringSendMessage extends SendMessage {
-    public StringSendMessage(String queueName){
+public class StringQueueProvider extends QueueProvider {
+    public StringQueueProvider(String queueName){
         super(queueName);
     }
 

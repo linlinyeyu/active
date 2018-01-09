@@ -9,7 +9,7 @@ import javax.jms.*;
 /**
  * Created by linlinyeyu on 2018/1/3.
  */
-public abstract class SendMessage {
+public abstract class QueueProvider {
     private static final String USERNAME = ActiveMQConnection.DEFAULT_USER;
     private static final String PASSWORD = ActiveMQConnection.DEFAULT_PASSWORD;
     private static final String BROKEURL = ActiveMQConnection.DEFAULT_BROKER_URL;
@@ -20,7 +20,7 @@ public abstract class SendMessage {
     protected Destination destination;
     protected MessageProducer messageProducer;
 
-    protected SendMessage(String queueName) {
+    protected QueueProvider(String queueName) {
         this.connectionFactory = new ActiveMQConnectionFactory(USERNAME,PASSWORD,BROKEURL);
         connectionFactory.setTrustAllPackages(true);
         RedeliveryPolicy redeliveryPolicy = new RedeliveryPolicy();

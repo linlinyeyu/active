@@ -1,29 +1,27 @@
 package provider.impl;
 
+import provider.QueueProvider;
 
-import provider.SendMessage;
-
+import javax.jms.BytesMessage;
 import javax.jms.JMSException;
-import javax.jms.StreamMessage;
 
 /**
  * Created by linlinyeyu on 2018/1/8.
  */
-public class StreamSendMessage extends SendMessage {
-    public StreamSendMessage(String queueName){
+public class BytesQueueProvider extends QueueProvider {
+    public BytesQueueProvider(String queueName){
         super(queueName);
     }
 
     @Override
     public  <T> boolean sendMessage(T obj) {
         try {
-            StreamMessage streamMessage = session.createStreamMessage();
-            streamMessage.writeObject((Object)obj);
+            BytesMessage bytesMessage = session.createBytesMessage();
+            bytesMessage.writeBytes((byte[]) obj);
             session.commit();
         } catch (JMSException e) {
             e.printStackTrace();
         }
-
         return false;
     }
 }

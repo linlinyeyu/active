@@ -1,6 +1,6 @@
 package provider.impl;
 
-import provider.SendMessage;
+import provider.QueueProvider;
 
 import javax.jms.JMSException;
 import javax.jms.ObjectMessage;
@@ -9,8 +9,8 @@ import java.io.Serializable;
 /**
  * Created by linlinyeyu on 2018/1/8.
  */
-public class ObjectSendMessage extends SendMessage {
-    public ObjectSendMessage(String queueName){
+public class ObjectQueueProvider extends QueueProvider {
+    public ObjectQueueProvider(String queueName){
         super(queueName);
     }
 

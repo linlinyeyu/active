@@ -1,4 +1,5 @@
 import consume.impl.PersonReceiveMessage;
+import consume.impl.TopicPersonReceiveMessage;
 import listener.Listener;
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
@@ -11,7 +12,7 @@ import javax.jms.*;
 public class Consume {
 
     public static void main(String []args){
-        PersonReceiveMessage receiveMessage = new PersonReceiveMessage("first_queue");
+        TopicPersonReceiveMessage receiveMessage = new TopicPersonReceiveMessage("first_topic");
         receiveMessage.receiveMessage();
     }
 }
