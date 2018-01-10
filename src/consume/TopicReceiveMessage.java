@@ -21,11 +21,11 @@ public abstract class TopicReceiveMessage {
     protected Topic topic;
     protected TopicSubscriber topicSubscriber;
 
-    public TopicReceiveMessage(String topic){
+    public TopicReceiveMessage(String topic,String clientId){
         connectionFactory = new ActiveMQConnectionFactory(USERNAME,PASSWORD,BROKEURL);
         try {
             connection = connectionFactory.createConnection();
-            connection.setClientID("ybliu");
+            connection.setClientID(clientId);
             session = connection.createSession(Boolean.TRUE,Session.AUTO_ACKNOWLEDGE);
             //destination = session.createTopic(topic);
             this.topic = session.createTopic(topic);

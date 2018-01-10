@@ -1,10 +1,4 @@
-import consume.impl.PersonReceiveMessage;
 import consume.impl.TopicPersonReceiveMessage;
-import listener.Listener;
-import org.apache.activemq.ActiveMQConnection;
-import org.apache.activemq.ActiveMQConnectionFactory;
-
-import javax.jms.*;
 
 /**
  * Created by linlinyeyu on 2017/12/29.
@@ -12,7 +6,7 @@ import javax.jms.*;
 public class Consume {
 
     public static void main(String []args){
-        TopicPersonReceiveMessage receiveMessage = new TopicPersonReceiveMessage("first_topic");
+        TopicPersonReceiveMessage receiveMessage = new TopicPersonReceiveMessage("first_topic","ybliu");
         receiveMessage.receiveMessage();
     }
 }

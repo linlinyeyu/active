@@ -1,6 +1,6 @@
-package provider.impl;
+package provider.impl.queue;
 
-import provider.QueueProvider;
+import provider.base.QueueProvider;
 
 import javax.jms.JMSException;
 import javax.jms.ObjectMessage;

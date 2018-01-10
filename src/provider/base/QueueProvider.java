@@ -1,15 +1,16 @@
-package provider;
+package provider.base;
 
 import org.apache.activemq.ActiveMQConnection;
 import org.apache.activemq.ActiveMQConnectionFactory;
 import org.apache.activemq.RedeliveryPolicy;
+import provider.base.ProviderBase;
 
 import javax.jms.*;
 
 /**
  * Created by linlinyeyu on 2018/1/3.
  */
-public abstract class QueueProvider {
+public class QueueProvider implements ProviderBase {
     private static final String USERNAME = ActiveMQConnection.DEFAULT_USER;
     private static final String PASSWORD = ActiveMQConnection.DEFAULT_PASSWORD;
     private static final String BROKEURL = ActiveMQConnection.DEFAULT_BROKER_URL;
@@ -20,7 +21,7 @@ public abstract class QueueProvider {
     protected Destination destination;
     protected MessageProducer messageProducer;
 
-    protected QueueProvider(String queueName) {
+    public QueueProvider(String queueName) {
         this.connectionFactory = new ActiveMQConnectionFactory(USERNAME,PASSWORD,BROKEURL);
         connectionFactory.setTrustAllPackages(true);
         RedeliveryPolicy redeliveryPolicy = new RedeliveryPolicy();
@@ -53,5 +54,5 @@ public abstract class QueueProvider {
         return true;
     }
 
-    public abstract <T> boolean sendMessage(T obj);
+    public <T> boolean sendMessage(T obj){return false;};
 }

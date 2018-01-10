@@ -9,8 +9,8 @@ import javax.jms.JMSException;
  * Created by linlinyeyu on 2018/1/9.
  */
 public class TopicPersonReceiveMessage extends TopicReceiveMessage {
-    public TopicPersonReceiveMessage(String topic){
-        super(topic);
+    public TopicPersonReceiveMessage(String topic,String clientId){
+        super(topic,clientId);
     }
     @Override
     public boolean receiveMessage() {

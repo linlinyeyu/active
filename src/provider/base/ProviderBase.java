@@ -1,4 +1,4 @@
-package provider;
+package provider.base;
 
 /**
  * Created by linlinyeyu on 2018/1/9.
